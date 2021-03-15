@@ -18,13 +18,15 @@ deploy:
     - 5432
     
 volumes:
-  - claim: postgres-master-data
-    mount: /appz/data
+  - claim: postgres-data
+    mount: /var/lib/postgres
     name: data
     size: 5Gi
-    mode: ReadWriteOnce
-    class: microk8s-hostpath   
-    
+  - claim: postgres-backup
+    mount: /appz/backup
+    name: backup
+    size: 5Gi
+
 monitor:
     notify: appzops@cloudbourne.co      
     
