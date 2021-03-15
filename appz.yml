@@ -17,24 +17,16 @@ deploy:
     port:
     - 5432
     
-#volumes:
-#  - claim: postgres-data
-#    mount: /var/lib/postgres
-#    name: data
-#    size: 5Gi
-#  - claim: postgres-backup
-#    mount: /appz/backup
-#    name: backup
-#    size: 5Gi
-
 volumes:
-  - claim: postgres-master-data
-    mount: /appz/data
+  - claim: postgres-data
+    mount: /var/lib/postgres
     name: data
     size: 5Gi
-    mode: ReadWriteOnce
-    class: microk8s-hostpath      
-    
+  - claim: postgres-backup
+    mount: /appz/backup
+    name: backup
+    size: 5Gi
+
 properties:
     POSTGRESQL_REPLICATION_MODE: master
     POSTGRESQL_DATA: /appz/data
@@ -48,10 +40,6 @@ properties:
     POSTGRESQL_REP_USER: replica
     PGPASSWORD: 
       vault: PGPASSWORD
-    APPUSER_PASSWORD:
-      vault: APPUSER_PASSWORD
     POSTGRES_SPRINGBOOTWEB_PASSWORD:
       vault: POSTGRES_SPRINGBOOTWEB_PASSWORD
-    APPZ_RESTORE_TOKEN: 20210315-1522
-    APPZ_LOAD_TOKEN: 20210315-1522
     revision : 25
