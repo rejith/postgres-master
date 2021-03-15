@@ -43,4 +43,4 @@ properties:
       vault: PGPASSWORD
     MYSQL_SPRINGBOOTWEB_PASSWORD:
       vault: MYSQL_SPRINGBOOTWEB_PASSWORD
-    revision : 56
+    revision : 25
