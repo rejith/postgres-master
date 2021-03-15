@@ -1,7 +1,7 @@
 app:
     name: Postgres Master
     code: POSTGRES
-    notify: appzdev@cloudbourne.co
+    notify: akanade@ecloudcontrol.com
     
 build:
     version: 12.2
@@ -9,10 +9,9 @@ build:
     build_file: none
     output_files: output/*.zip
     image_template: postgres_master-12.2
-    image_name: alpha/postgres_master
     
 deploy:
-    context: alpha/DEV
+    context: abhikanade-cc/DEV
     type: statefulset
     replicas: 1
     port:
@@ -42,8 +41,6 @@ properties:
     POSTGRESQL_REP_USER: replica
     PGPASSWORD: 
       vault: PGPASSWORD
-    APPUSER_PASSWORD:
-      vault: APPUSER_PASSWORD
-    APPZ_RESTORE_TOKEN: 20200810-1217
-    APPZ_LOAD_TOKEN: 20200810-1217
+    MYSQL_SPRINGBOOTWEB_PASSWORD:
+      vault: MYSQL_SPRINGBOOTWEB_PASSWORD
     revision : 56
