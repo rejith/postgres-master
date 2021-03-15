@@ -17,18 +17,23 @@ deploy:
     port:
     - 5432
     
+#volumes:
+#  - claim: postgres-data
+#    mount: /var/lib/postgres
+#    name: data
+#    size: 5Gi
+#  - claim: postgres-backup
+#    mount: /appz/backup
+#    name: backup
+#    size: 5Gi
+
 volumes:
-  - claim: postgres-data
-    mount: /var/lib/postgres
+  - claim: postgres-master-data
+    mount: /appz/data
     name: data
     size: 5Gi
-  - claim: postgres-backup
-    mount: /appz/backup
-    name: backup
-    size: 5Gi
-
-monitor:
-    notify: appzops@cloudbourne.co      
+    mode: ReadWriteOnce
+    class: microk8s-hostpath      
     
 properties:
     POSTGRESQL_REPLICATION_MODE: master
