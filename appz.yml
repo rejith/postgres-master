@@ -42,4 +42,4 @@ properties:
       vault: PGPASSWORD
     POSTGRES_SPRINGBOOTWEB_PASSWORD:
       vault: POSTGRES_SPRINGBOOTWEB_PASSWORD
-    revision : 25
+    revision : 24
